@@ -25,6 +25,13 @@ The tuple is deconstructed and its elements are passed as function arguments.
 
 If you don't care about the function result, you can use keyword "I" (or words "I also") as the variable name. In that case, you can also use "caused" instead of "did"/"made".
 
+Variable increment/decrement
+----------------------------
+
+    <identifier: variable name> got <number literal> more.
+
+    <identifier: variable name> got <number literal> (less|fewer).
+
 Array cration/initialization
 -------------------------
 
