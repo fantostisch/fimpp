@@ -37,6 +37,10 @@ If you want to compile it manually (e.g. no _make_ on your system), follow these
     $ jar cfe ../bin/fimpp.jar stasiak.karol.fimpp.Main stasiak
     
 (By the way, the steps above should also work on Windows.)
+
+If you want to make sure everything works as expected, run some tests:
+
+    $ make test
      
 Examples
 --------
