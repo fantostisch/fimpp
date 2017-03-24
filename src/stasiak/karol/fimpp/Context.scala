@@ -121,8 +121,11 @@ case class RuntimeArray(array: ListBuffer[RuntimeValue]= new ListBuffer) extends
   override def toString = array.mkString(", ")
   def get(index: Long):RuntimeValue = {
     if (index<=0) throw new FimException("Negative page")
-    if (index>array.size) RuntimeNull
-    array(index.toInt-1)
+    if (index>array.size) {
+      RuntimeNull
+    } else {
+      array(index.toInt-1)
+    }
   }
   def set(index: Long, value: RuntimeValue) {
     while(array.size<index) array += RuntimeNull
