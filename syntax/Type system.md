@@ -28,10 +28,13 @@ Literal syntax:
 Tuples
 -----
 
-Tuples are formed in a way similar to the argument lists. They currently suck though, so there's little use for them:
+Tuples are formed in a way similar to the argument lists. Use "only ..." to
+create tuples with one element. They currently suck though, so there's little
+use for them:
 
     1, 2, and "string"
     Twilight, Rarity and Spike
+    only 1
     
 Booleans
 -------
