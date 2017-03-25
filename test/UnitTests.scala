@@ -11,6 +11,14 @@ object UnitTests {
   def main(a: Array[String]) {
     println(FimppParser.parseAll(FimppParser.condition,
       "applejack has more than one".toLowerCase()))
+    println(FimppParser.parseAll(FimppParser.condition,
+      "applejack has more than one or pinkie pie has more than one"))
+    println(FimppParser.parseAll(FimppParser.condition,
+      "applejack has more than one and pinkie pie has more than one"))
+    println(FimppParser.parseAll(FimppParser.condition,
+      "applejack is equal to one and pinkie pie has more than one"))
+    println(FimppParser.parseAll(FimppParser.condition,
+      "applejack is equal to one and two"))
     println(FimppParser.parseAll(FimppParser.identifier~FimppParser.kw("i")|FimppParser.kw("x")~FimppParser.kw("i"),
       "x i".toLowerCase()))
     println(FimppParser.parseAll(FimppParser.stringLiteral,

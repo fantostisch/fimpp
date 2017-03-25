@@ -52,3 +52,8 @@ Conjunction
     <simple condition> and <simple condition>
     <simple condition>, <simple condition> and <simple condition>
     ...
+
+There is some ambiguity between conjuction and tuple syntaxes. Don't try to use
+tuple literals in conjuctions. For instance, this won't work:
+
+    I did this while numbers were equal to one and two and letters were equal...

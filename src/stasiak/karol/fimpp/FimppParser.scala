@@ -94,22 +94,27 @@ object FimppParser extends RegexParsers {
     )
 
   def condition:Parser[Condition] = andCondition | orCondition | simpleCondition
-  def simpleCondition:Parser[Condition] = relationalCondition //TODO
+
+  def simpleCondition:Parser[Condition] = relationalCondition(expression) //TODO
+  /* these conditions can't include a tuple literal - this removes ambiguity
+   * when used in a conjuction */
+  def numberRelationalCondition:Parser[Condition] = relationalCondition(simpleExpression)
+
   def andCondition:Parser[Conjunction] = (
-      simpleCondition~and~simpleCondition ^^ {case c1~_~c2 => Conjunction(List(c1,c2))}
-        | simpleCondition~comma~andCondition ^^ {case c1~_~Conjunction(cs) => Conjunction(c1::cs)}
+      numberRelationalCondition~and~simpleCondition ^^ {case c1~_~c2 => Conjunction(List(c1,c2))}
+        | numberRelationalCondition~comma~andCondition ^^ {case c1~_~Conjunction(cs) => Conjunction(c1::cs)}
       )
   def orCondition = kw("either?")~>eitherLessOrCondition
   def eitherLessOrCondition:Parser[Alternative] = (
     simpleCondition~or~simpleCondition ^^ {case c1~_~c2 => Alternative(List(c1,c2))}
       | simpleCondition~comma~eitherLessOrCondition ^^ {case c1~_~Alternative(cs) => Alternative(c1::cs)}
     )
-  def relationalCondition:Parser[Condition] = (
-    expression~condOperator~expression ^^ {case e1~op~e2 => Relational(e1,op,e2)}
-      | altkw("everything","everypony")~>kw("in")~>expression~condOperator~expression ^^ {case e1~op~e2 => Relational(e1,"all"+op,e2)}
-      | altkw("anything","anypony")~>kw("in")~>expression~condOperator~expression ^^ {case e1~op~e2 => Relational(e1,"any"+op,e2)}
-      | expression<~(isOrAre~altkw("nothing","nopony")) ^^ {e => Relational(e,"=", NullValue)}
-      | expression<~(isOrAre~altkw("something","somepony")) ^^ {e => Relational(e,"!=", NullValue)}
+  def relationalCondition(ex:Parser[Expr]):Parser[Condition] = (
+    ex~condOperator~ex ^^ {case e1~op~e2 => Relational(e1,op,e2)}
+      | altkw("everything","everypony")~>kw("in")~>ex~condOperator~ex ^^ {case e1~op~e2 => Relational(e1,"all"+op,e2)}
+      | altkw("anything","anypony")~>kw("in")~>ex~condOperator~ex ^^ {case e1~op~e2 => Relational(e1,"any"+op,e2)}
+      | ex<~(isOrAre~altkw("nothing","nopony")) ^^ {e => Relational(e,"=", NullValue)}
+      | ex<~(isOrAre~altkw("something","somepony")) ^^ {e => Relational(e,"!=", NullValue)}
     )
   def hasOrHave:Parser[Unit] = altkw("has","have","had")
   def isOrAre:Parser[Unit] = altkw("is","are","was","were")
