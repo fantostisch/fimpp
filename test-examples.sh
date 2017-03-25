@@ -25,4 +25,19 @@ for src in examples/*.fimpp; do
 	fi
 done
 
+out="test/UnitTests.out"
+ok="test/UnitTests.ok"
+
+scala -classpath bin/fimpp.jar test/UnitTests.scala > "$out"
+
+if [ -e "$ok" ]; then
+	if ! diff -u "$ok" "$out"; then
+		rv=1
+	else
+		rm "$out"
+	fi
+else
+	cp "$out" "$ok"
+fi
+
 exit "$rv"
