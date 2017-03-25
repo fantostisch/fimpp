@@ -6,6 +6,9 @@ all:
 test:
 	./test-examples.sh
 
+test-parser:
+	scala -classpath bin/fimpp.jar test/UnitTests.scala
+
 clean:
 	rm -r target
 
