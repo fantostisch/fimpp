@@ -28,7 +28,7 @@ example, the traditional *Hello, World!* written in FIM++ might look like this:
 You can find more involved examples under the `examples` subdirectory,
 including famous algorithms such as the [Sieve of Eratosthenes][1] and [Quicksort][2].
 There you can also find an implementation of the [Brainfuck][3] interpreter,
-which proves the Turing completenes of the FIM++ language.
+which proves the Turing completeness of the FIM++ language.
 
 [1]: https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 [2]: https://en.wikipedia.org/wiki/Quicksort
