@@ -4,7 +4,7 @@ all:
 	cd target && jar cfe ../bin/fimpp.jar stasiak.karol.fimpp.Main stasiak
 
 test:
-	./test-examples.sh
+	./run_tests.sh
 
 test-parser:
 	scala -classpath bin/fimpp.jar test/UnitTests.scala
@@ -12,4 +12,4 @@ test-parser:
 clean:
 	rm -r target
 
-.PHONY: clean test
+.PHONY: all test test-parser clean
