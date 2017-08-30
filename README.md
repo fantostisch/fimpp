@@ -36,10 +36,12 @@ which proves the Turing completeness of the FIM++ language.
 
 The original FIM++ interpreter was created by @KarolS on GitHub. It was
 inspired by [a post][4] by Cereal Velocity on Equestria Daily and some
-[example programs][5] written by DeftCrow and others on DeviantArt.
+[example programs][5] written by DeftCrow and others on DeviantArt. See also
+the FIM++ page at the [Esolang Wiki][5a].
 
 [4]: http://www.equestriadaily.com/2012/10/editorial-fim-pony-programming-language.html
 [5]: http://deftcrow.deviantart.com/art/FiM-Programming-Hello-World-99-Jugs-of-Cider-330736334
+[5a]: https://esolangs.org/wiki/FiM%2B%2B
 
 ## Compilation
 
