@@ -43,9 +43,12 @@ inspired by [a post][4] by Cereal Velocity on Equestria Daily and some
 
 ## Compilation
 
-You will need the [Scala compiler][6] and the Java Development Kit (JDK). There
-are some known problems when using newer Scala versions - any contributions in
-that regard would be welcome. Scala 2.9.2 in Debian Jessie is known to work.
+You will need the [Scala compiler][6] and the Java Development Kit (JDK) to
+build the *fimpp* interpreter from source. Be warned that there are some known
+problems when using newer Scala and Java versions (any contributions in that
+regard would be most welcome). Scala 2.9.2 and OpenJDK 7 in Debian Jessie are
+known to work. If you have problems getting things to play nicely, see *Running
+from Docker* below.
 
 [6]: http://www.scala-lang.org/downloads
 
@@ -83,6 +86,28 @@ source file from your command line on a Linux system:
     $ bin/fimpp <FIM++ script file>
 
 There is also a `fimpp.bat` available for running on Windows.
+
+## Running from Docker
+
+There is a [Docker container][7] with *fimpp* available. This should make it
+possible to run *fimpp* on any machine capable of running Docker containers,
+regardless of Java version conflicts. However this does come at a price of a
+hefty download.
+
+[7]: https://www.docker.com/
+
+First pull the container from Docker Hub:
+
+    $ docker pull avian2/fimpp
+
+After that, you can run the `99bottles.fimpp` example like this:
+
+    $ docker run avian2/fimpp examples/99bottles.fimpp
+
+Or to run your own program `letter.fimpp` (that you saved into the current
+working directory):
+
+    $ docker run -v `pwd`/letter.fimpp:/letter.fimpp avian2/fimpp /letter.fimpp
 
 ## Learning to write programs in FIM++
 
