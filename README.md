@@ -43,8 +43,9 @@ inspired by [a post][4] by Cereal Velocity on Equestria Daily and some
 
 ## Compilation
 
-You will need Scala compiler from [Scala's website][6] and the Java Development
-Kit (JDK).
+You will need the [Scala compiler][6] and the Java Development Kit (JDK). There
+are some known problems when using newer Scala versions - any contributions in
+that regard would be welcome. Scala 2.9.2 in Debian Jessie is known to work.
 
 [6]: http://www.scala-lang.org/downloads
 
