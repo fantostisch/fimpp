@@ -124,7 +124,7 @@ case class Increment(variable: String, value: Expr) extends Statement  {
   def interpret(context: Context) {
     (context.get(variable),value.eval(context)) match {
       case (RuntimeNumber(x),RuntimeNumber(y)) => context.set(variable, RuntimeNumber(x+y) )
-      case _ => throw new FimException("Cannot increment")
+      case _ => throw new FimException(variable + " is not somepony we can increment or decrement", pos)
     }
   }
 }

@@ -131,13 +131,13 @@ object FimppParser extends RegexParsers {
       | isOrAre~kw("not")~(kw("an?","element")|kw("elements"))~kw("of") ^^^ "!="
     ) //TODO
 
-  def increment: Parser[Increment] = (
+  def increment: Parser[Increment] = positioned { (
     identifier~(kw("got"))~number~(kw("less")^^^(-1) | kw("fewer")^^^ (-1) | kw("more")^^^1)<~sentenceEnd
     ^^ {
       case i~_~n~dir =>
         Increment(i,NumberValue(n*dir))
     }
-  )
+  ) }
   def assignment: Parser[Assignment] = (
     kw("did","you","know","that?")
     ~> identifier
