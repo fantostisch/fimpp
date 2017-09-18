@@ -1,6 +1,7 @@
 package stasiak.karol.fimpp
 
 import collection.mutable
+import util.parsing.input.Positional
 
 case class Function(name:String, argNames:List[String], body:List[Statement], returnVar: String){
   def call(context: Context, args: List[RuntimeValue]):RuntimeValue={
@@ -10,7 +11,7 @@ case class Function(name:String, argNames:List[String], body:List[Statement], re
   }
 }
 
-sealed trait Statement{
+sealed trait Statement extends Positional {
   def interpret(context: Context): Unit
 }
 case class ClassImportStat(variable: String, id: List[String])  extends Statement {
@@ -100,7 +101,7 @@ case class ArrayRetrieval(arrayVariable: String, index: Expr, otherVariable:Stri
       case a:RuntimeArray =>
         index.eval(context) match {
           case RuntimeNumber(i) => context.set(otherVariable, a.get(i))
-          case _ => throw new FimException("This is not a page number")
+          case _ => throw new FimException("This is not a page number", pos)
         }
       case _ => throw new FimException(arrayVariable+" is not a book")
     }

@@ -1,5 +1,7 @@
 package stasiak.karol.fimpp
 
+import util.parsing.input.Position
+
 /**
  * Created with IntelliJ IDEA.
  * User: karol
@@ -11,4 +13,12 @@ object FimException {
 
 }
 
-class FimException(msg:String) extends Exception(msg)
+class FimException(msg:String, pos:Position=null) extends Exception(msg)
+{
+  override def toString: String = {
+    pos match {
+      case null => "error: " + msg
+      case _  => "[" + pos + "] error: " + msg
+    }
+  }
+}

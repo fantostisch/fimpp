@@ -22,7 +22,11 @@ object Main {
         val parsed = FimppParser.parseAll(FimppParser.module, program)
         if (parsed.successful) {
           println("interpreting: "+args(0))
-          parsed.get.run()
+          try {
+            parsed.get.run()
+          } catch {
+            case e:FimException => println(e)
+          }
         }
         else println(parsed)
       case _ =>

@@ -268,7 +268,7 @@ object FimppParser extends RegexParsers {
       case ord~book~e => ArrayAssignment(book,ord,e)
     }
     )
-  def arrayRetrieval: Parser[ArrayRetrieval] = (
+  def arrayRetrieval: Parser[ArrayRetrieval] = positioned { (
     (kw("on")~>ordinalExpression)
       ~ (kw("of","the?","book?")~>identifier)
       ~(kw("i","read","about")~>identifier)
@@ -276,7 +276,7 @@ object FimppParser extends RegexParsers {
       ^^{
       case ord~book~varName => ArrayRetrieval(book,ord,varName)
     }
-    )
+    ) }
   def arrayInit: Parser[ArrayInit] = (
     kw("today?","i","found","a","book")~>opt("named"|"titled")~>identifier<~opt(kw("today"))<~sentenceEnd
       ^^ {id => ArrayInit(id)}
