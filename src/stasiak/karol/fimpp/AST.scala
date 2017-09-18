@@ -101,9 +101,9 @@ case class ArrayRetrieval(arrayVariable: String, index: Expr, otherVariable:Stri
       case a:RuntimeArray =>
         index.eval(context) match {
           case RuntimeNumber(i) => context.set(otherVariable, a.get(i))
-          case _ => throw new FimException("This is not a page number", pos)
+          case _ => throw new FimException("This is not a page number", index.pos)
         }
-      case _ => throw new FimException(arrayVariable+" is not a book")
+      case _ => throw new FimException(arrayVariable+" is not a book", pos)
     }
   }
 }

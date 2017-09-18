@@ -18,7 +18,7 @@ class FimException(msg:String, pos:Position=null) extends Exception(msg)
   override def toString: String = {
     pos match {
       case null => "error: " + msg
-      case _  => "[" + pos + "] error: " + msg
+      case _  => "[" + pos + "] error: " + msg + "\n\n" + pos.longString
     }
   }
 }

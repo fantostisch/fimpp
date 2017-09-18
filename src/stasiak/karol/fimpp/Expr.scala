@@ -1,6 +1,8 @@
 package stasiak.karol.fimpp
 
-sealed trait Expr {
+import util.parsing.input.Positional
+
+sealed trait Expr extends Positional {
   def eval(context:Context):RuntimeValue
 }
 case object EmptyExpr extends Expr {

@@ -86,7 +86,9 @@ object FimppParser extends RegexParsers {
     )
   def expression: Parser[Expr] =
     listExpression | kw("only")~>simpleExpression ^^ {e=>ListExpression(List(e))} | simpleExpression
-  def simpleExpression: Parser[Expr] = literal | identifier ^^{id=>VariableValue(id)} //TODO
+  def simpleExpression: Parser[Expr] = positioned {
+    literal | identifier ^^{id=>VariableValue(id)} //TODO
+  }
 
   def ordinalExpression: Parser[Expr] = (
     ordinalLiteral<~kw("page")^^ {v=>NumberValue(v)}
