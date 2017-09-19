@@ -1,6 +1,6 @@
 package stasiak.karol.fimpp
 import collection.mutable
-import collection.mutable.ListBuffer
+import collection.mutable.ArrayBuffer
 
 /**
  * Created with IntelliJ IDEA.
@@ -56,7 +56,7 @@ object BuiltInFunctions {
     case _ => throw new FimException("Trying to divide something weird")
   }
   def dictionary(args: List[RuntimeValue]) = args match {
-    case List(RuntimeList(l)) => RuntimeArray(new ListBuffer[RuntimeValue]()++l)
+    case List(RuntimeList(l)) => RuntimeArray(new ArrayBuffer[RuntimeValue]()++l)
     case _ => throw new FimException("This is not a list")
   }
   def first(args: List[RuntimeValue]) = args match {

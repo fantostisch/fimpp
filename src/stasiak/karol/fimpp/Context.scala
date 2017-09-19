@@ -1,7 +1,7 @@
 package stasiak.karol.fimpp
 
 import collection.mutable
-import collection.mutable.ListBuffer
+import collection.mutable.ArrayBuffer
 import reflect.ClassManifest
 import java.awt.event.{ActionEvent, ActionListener}
 
@@ -117,7 +117,7 @@ case object RuntimeGlobalReference extends RuntimeValue {
   def convertTo(context: Context, clazz:Class[_]) = throw new FimException("I don't know what went wrong")
   def toJava = throw new FimException("I don't know what went wrong")
 }
-case class RuntimeArray(array: ListBuffer[RuntimeValue]= new ListBuffer) extends RuntimeValue {
+case class RuntimeArray(array: ArrayBuffer[RuntimeValue]= new ArrayBuffer) extends RuntimeValue {
   override def toString = array.mkString(", ")
   def get(index: Long):RuntimeValue = {
     if (index<=0) throw new FimException("Negative page")
