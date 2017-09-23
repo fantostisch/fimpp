@@ -1,0 +1,12 @@
+parsing: test/errors/book_page_nothing.fimpp
+interpreting: test/errors/book_page_nothing.fimpp
+Exception in thread "main" stasiak.karol.fimpp.FimException: This is not a page number
+	at stasiak.karol.fimpp.ArrayRetrieval.interpret(AST.scala:103)
+	at stasiak.karol.fimpp.Function$$anonfun$call$1.apply(AST.scala:8)
+	at stasiak.karol.fimpp.Function$$anonfun$call$1.apply(AST.scala:8)
+	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
+	at scala.collection.immutable.List.foreach(List.scala:76)
+	at stasiak.karol.fimpp.Function.call(AST.scala:8)
+	at stasiak.karol.fimpp.Module.run(AST.scala:201)
+	at stasiak.karol.fimpp.Main$.main(Main.scala:25)
+	at stasiak.karol.fimpp.Main.main(Main.scala)
