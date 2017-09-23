@@ -1,5 +1,29 @@
 #!/bin/bash
 
+compare() {
+	out=$1
+	ok=${out%.out}.ok
+
+	local rv
+
+	if [ -e "$ok" ]; then
+		if ! diff -u "$ok" "$out"; then
+			rv=1
+			echo "failed"
+		else
+			rv=0
+			echo "ok"
+			rm "$out"
+		fi
+	else
+		rv=1
+		echo "first run"
+		cp "$out" "$ok"
+	fi
+
+	return $rv
+}
+
 set -ue
 
 rv=0
@@ -16,42 +40,18 @@ for src in examples/*.fimpp; do
 
 	name=`basename "$src" .fimpp`
 	out="test/examples/${name}.out"
-	ok="test/examples/${name}.ok"
 
 	bin/fimpp "$src" > "$out" 2>&1
 
-	if [ -e "$ok" ]; then
-		if ! diff -u "$ok" "$out"; then
-			rv=1
-			echo "failed"
-		else
-			echo "ok"
-			rm "$out"
-		fi
-	else
-		echo "first run"
-		cp "$out" "$ok"
-	fi
+	compare "$out" || rv=1
 done
 
 out="test/UnitTests.out"
-ok="test/UnitTests.ok"
 
 echo -n "Running unit tests... "
 
 scala -classpath bin/fimpp.jar test/UnitTests.scala > "$out"
 
-if [ -e "$ok" ]; then
-	if ! diff -u "$ok" "$out"; then
-		rv=1
-		echo "failed"
-	else
-		echo "ok"
-		rm "$out"
-	fi
-else
-	echo "first run"
-	cp "$out" "$ok"
-fi
+compare "$out" || rv=1
 
 exit "$rv"
