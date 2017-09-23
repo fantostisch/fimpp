@@ -1,0 +1,7 @@
+parsing: test/errors/book_write_page_zero.fimpp
+interpreting: test/errors/book_write_page_zero.fimpp
+[6.21] error: Tried to write to a zero or a negative page of a book
+
+On page numbered by A of the book B I wrote 1.
+
+                    ^

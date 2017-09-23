@@ -88,8 +88,14 @@ case class ArrayAssignment(arrayVariable: String, index: Expr, value: Expr) exte
     context.get(arrayVariable) match {
       case a:RuntimeArray =>
         index.eval(context) match {
-          case RuntimeNumber(i) => a.set(i, value eval context)
-          case _ => throw new FimException("This is not a page number")
+          case RuntimeNumber(i) => {
+            if (i <= 0) {
+              throw new FimException("Tried to write to a zero or a negative page of a book", index.pos)
+            } else {
+              a.set(i, value.eval(context))
+            }
+          }
+          case _ => throw new FimException("This is not a page number", index.pos)
         }
       case _ => throw new FimException(arrayVariable+" is not a book")
     }
