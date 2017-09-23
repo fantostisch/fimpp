@@ -120,7 +120,6 @@ case object RuntimeGlobalReference extends RuntimeValue {
 case class RuntimeArray(array: ArrayBuffer[RuntimeValue]= new ArrayBuffer) extends RuntimeValue {
   override def toString = array.mkString(", ")
   def get(index: Long):RuntimeValue = {
-    if (index<=0) throw new FimException("Tried to read zero or a negative page of a book")
     if (index>array.size) {
       RuntimeNull
     } else {

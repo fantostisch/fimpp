@@ -100,7 +100,13 @@ case class ArrayRetrieval(arrayVariable: String, index: Expr, otherVariable:Stri
     context.get(arrayVariable) match {
       case a:RuntimeArray =>
         index.eval(context) match {
-          case RuntimeNumber(i) => context.set(otherVariable, a.get(i))
+          case RuntimeNumber(i) => {
+            if (i<=0) {
+              throw new FimException("Tried to read zero or a negative page of a book", index.pos)
+            } else {
+              context.set(otherVariable, a.get(i))
+            }
+          }
           case _ => throw new FimException("This is not a page number", index.pos)
         }
       case _ => throw new FimException(arrayVariable+" is not a book", pos)
