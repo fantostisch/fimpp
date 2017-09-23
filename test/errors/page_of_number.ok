@@ -1,12 +1,7 @@
 parsing: test/errors/page_of_number.fimpp
 interpreting: test/errors/page_of_number.fimpp
-Exception in thread "main" stasiak.karol.fimpp.FimException: b is not a book
-	at stasiak.karol.fimpp.ArrayRetrieval.interpret(AST.scala:105)
-	at stasiak.karol.fimpp.Function$$anonfun$call$1.apply(AST.scala:8)
-	at stasiak.karol.fimpp.Function$$anonfun$call$1.apply(AST.scala:8)
-	at scala.collection.LinearSeqOptimized$class.foreach(LinearSeqOptimized.scala:59)
-	at scala.collection.immutable.List.foreach(List.scala:76)
-	at stasiak.karol.fimpp.Function.call(AST.scala:8)
-	at stasiak.karol.fimpp.Module.run(AST.scala:201)
-	at stasiak.karol.fimpp.Main$.main(Main.scala:25)
-	at stasiak.karol.fimpp.Main.main(Main.scala)
+[7.1] error: b is not a book
+
+On page numbered by A of the book B I read about C.
+
+^
