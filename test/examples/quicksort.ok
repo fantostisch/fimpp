@@ -1,4 +1,0 @@
-parsing: examples/quicksort.fimpp
-interpreting: examples/quicksort.fimpp
-9, 5, 4, 11, 2, 10, 6, 3, 8, 12, 1, 7
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12

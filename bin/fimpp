@@ -1,3 +1,0 @@
-#!/bin/bash
-DIR=`dirname "$0"`
-java -cp "$DIR/scala-library.jar:$DIR/fimpp.jar" stasiak.karol.fimpp.Main "$@"

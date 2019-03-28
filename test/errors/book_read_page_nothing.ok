@@ -1,7 +1,0 @@
-parsing: test/errors/book_read_page_nothing.fimpp
-interpreting: test/errors/book_read_page_nothing.fimpp
-[8.21] error: This is not a page number
-
-On page numbered by A of the book B I read about C.
-
-                    ^

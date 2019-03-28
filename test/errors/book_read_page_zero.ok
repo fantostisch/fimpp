@@ -1,7 +1,0 @@
-parsing: test/errors/book_read_page_zero.fimpp
-interpreting: test/errors/book_read_page_zero.fimpp
-[6.21] error: Tried to read zero or a negative page of a book
-
-On page numbered by A of the book B I read about C.
-
-                    ^

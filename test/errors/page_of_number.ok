@@ -1,7 +1,0 @@
-parsing: test/errors/page_of_number.fimpp
-interpreting: test/errors/page_of_number.fimpp
-[7.1] error: b is not a book
-
-On page numbered by A of the book B I read about C.
-
-^

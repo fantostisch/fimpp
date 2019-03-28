@@ -1,5 +1,0 @@
-parsing: test/errors/syntax.fimpp
-[1.1] failure: string matching regex `(?i)\b\Qdear\E\b' expected but `a' found
-
-a
-^

@@ -1,0 +1,7 @@
+parsing: test/errors/inc_string.fimpp
+interpreting: test/errors/inc_string.fimpp
+[5.29] error: b is not somepony we can increment or decrement
+
+Did you know that b is "a"? b got one more!
+
+                            ^
